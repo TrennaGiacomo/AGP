@@ -5,12 +5,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private bool rotateTowardMovement = true;
 
+    private Animator playerAnimator;
+
+    private void Start()
+    {
+        playerAnimator = GetComponentInChildren<Animator>();
+    }
+
     private void Update()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
         Vector3 direction = new Vector3(h, 0, v).normalized;
+        playerAnimator.SetFloat("WalkingSpeed", direction.magnitude);
 
         if (direction.magnitude > 0.1f)
         {
