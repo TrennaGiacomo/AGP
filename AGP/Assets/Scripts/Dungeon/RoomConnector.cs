@@ -3,20 +3,11 @@ using System.Collections.Generic;
 
 public class RoomConnector : MonoBehaviour
 {
-    [Header("Door Spawn Points")]
-    [SerializeField] private Transform doorPointNorth;
-    [SerializeField] private Transform doorPointSouth;
-    [SerializeField] private Transform doorPointEast;
-    [SerializeField] private Transform doorPointWest;
-
-    [Header("Wall Objects (solid walls)")]
+    [Header("Wall Objects")]
     [SerializeField] private GameObject wallNorth;
     [SerializeField] private GameObject wallSouth;
     [SerializeField] private GameObject wallEast;
     [SerializeField] private GameObject wallWest;
-
-    [Header("Door Prefab")]
-    [SerializeField] private GameObject doorPrefab;
 
     private Vector2Int[] directions = new[]
     {
@@ -28,27 +19,18 @@ public class RoomConnector : MonoBehaviour
 
     public void SetupConnections(Room room, Dictionary<Vector2Int, Room> allRooms)
     {
-        Transform[] spawnPoints = { doorPointNorth, doorPointSouth, doorPointEast, doorPointWest };
-        GameObject[] wallSolids = { wallNorth, wallSouth, wallEast, wallWest };
+        GameObject[] wallObjects = { wallNorth, wallSouth, wallEast, wallWest };
 
         for (int i = 0; i < directions.Length; i++)
         {
             Vector2Int neighborPos = room.GridPosition + directions[i];
-            bool connected = allRooms.ContainsKey(neighborPos);
 
-            if (connected)
+            bool hasNeighbor = allRooms.ContainsKey(neighborPos);
+            wallObjects[i].SetActive(!hasNeighbor); // Hide wall if connected
+
+            if (hasNeighbor)
             {
-                wallSolids[i].SetActive(false);
-
-                
-                Transform doorSpawn = spawnPoints[i];
-                GameObject door = Instantiate(doorPrefab, doorSpawn.position, doorSpawn.rotation, transform);
-
                 room.Connect(allRooms[neighborPos]);
-            }
-            else
-            {
-                wallSolids[i].SetActive(true);
             }
         }
     }

@@ -64,13 +64,24 @@ public class LinearRoomGenerator : IRoomGenerator
 
     private Vector2Int? GetAvailableDirection(Vector2Int fromPos)
     {
-        var shuffledDirs = directions.OrderBy(x => Random.value).ToArray();
-        foreach (var dir in shuffledDirs)
+        var biasedDirs = new List<Vector2Int>
         {
-            var targetPos = fromPos + dir;
-            if (!placedRooms.ContainsKey(targetPos))
-                return targetPos;
+            Vector2Int.right,  
+            Vector2Int.right,
+            Vector2Int.up,     
+            Vector2Int.left,   
+            Vector2Int.down    
+        };
+
+        biasedDirs = biasedDirs.OrderBy(x => Random.value).ToList();
+
+        foreach (var dir in biasedDirs)
+        {
+            Vector2Int nextPos = fromPos + dir;
+            if (!placedRooms.ContainsKey(nextPos))
+                return nextPos;
         }
+
         return null;
     }
 }
