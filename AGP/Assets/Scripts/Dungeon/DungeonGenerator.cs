@@ -8,8 +8,8 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private float roomSpacing = 10f;
     [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private MinimapManager minimapManager;
-    [SerializeField] private Transform dungeonRoot;
-
+    
+    private Transform dungeonRoot;
     private IRoomGenerator generator;
 
     private void Start()
