@@ -213,9 +213,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 55993261}
   - {fileID: 287122438}
   - {fileID: 750519567}
-  - {fileID: 55993261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -271,6 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a613cbedda591d4db98d0a09af6dcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FullMinimapToggle: 9
   roomIconPrefab: {fileID: 7408440222743712382, guid: e6057db921cf54840b83cf8afe0562ab, type: 3}
   playerIconPrefab: {fileID: 4541106551552602418, guid: 9e0e01443e240f74e956c56090862014, type: 3}
   minimapContent: {fileID: 1654672399}
