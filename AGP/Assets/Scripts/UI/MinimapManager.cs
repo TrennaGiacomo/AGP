@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class MinimapManager : MonoBehaviour
 {
+    [Header("Keybinds")]
+    [SerializeField] private KeyCode FullMinimapToggle = KeyCode.Tab;
+
     [Header("Room & Player Icons")]
     [SerializeField] private GameObject roomIconPrefab;
     [SerializeField] private GameObject playerIconPrefab;
@@ -25,6 +28,10 @@ public class MinimapManager : MonoBehaviour
     private RectTransform activeContent;
     private bool isMinimapActive = true;
 
+    private void Awake()
+    {
+        minimapUI.SetActive(true);
+    }
     public void Init(Dictionary<Vector2Int, Room> placedRooms)
     {
         foreach (var kvp in placedRooms)
@@ -49,7 +56,7 @@ public class MinimapManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(FullMinimapToggle))
         {
             ToggleMapView();
         }

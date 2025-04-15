@@ -156,8 +156,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9091655469114645818}
+  - component: {fileID: 5492568786201084721}
   - component: {fileID: 843948390770648257}
   - component: {fileID: 9110116719128335803}
+  - component: {fileID: -8092071675889768053}
+  - component: {fileID: 499388819084716713}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -185,6 +188,27 @@ Transform:
   - {fileID: 7428760613766105689}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5492568786201084721
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888344263585367539}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8.5, y: 5, z: 8.5}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!114 &843948390770648257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +237,52 @@ MonoBehaviour:
   wallSouth: {fileID: 4893261514399651811}
   wallEast: {fileID: 4501098368919442549}
   wallWest: {fileID: 8057911938531099460}
+--- !u!114 &-8092071675889768053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888344263585367539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec78d446a17a06940af2368d9403cdcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 6308596301654018182, guid: f3e8c60a101450a4aba9d6f89d6a754f, type: 3}
+  - {fileID: 8400592211231082389, guid: 08c1c9d06bf4cb84db8f53d16b5a615f, type: 3}
+  propPrefabs:
+  - {fileID: 144150, guid: fb698eb68f15b3845baf425febbee697, type: 3}
+  - {fileID: 175928, guid: 497b6e4d56b9a2d48ac2cd8de829fa88, type: 3}
+  - {fileID: 131778, guid: 74231780cc79e3a45a60bfadd89b76d5, type: 3}
+  - {fileID: 185252, guid: ac72a98c062e432478eb557db53fdc1d, type: 3}
+  - {fileID: 177010, guid: eb999b0b67a4958469eed87f4b9d8d4b, type: 3}
+  - {fileID: 165448, guid: 0cbe9bd2141ef7442a83a849dabf9a87, type: 3}
+  - {fileID: 143182, guid: 8659f67b76d6a314f9e352d6d0c7b43b, type: 3}
+  - {fileID: 141482, guid: 16b5a7abcb1d9cb438b51c495e76eb52, type: 3}
+  - {fileID: 120480, guid: 08cedb31bf7d3414a92316d542661816, type: 3}
+  - {fileID: 158532, guid: 5f453323eb1cb374b98c94ab5004a413, type: 3}
+  - {fileID: 168672, guid: 73b39cdd67614854b808700c7c5d34c7, type: 3}
+  - {fileID: 132048, guid: e56ebb4a3996049479a45d35c3854e8c, type: 3}
+  - {fileID: 104528, guid: a80fd84dfabec59439ce7888e35f15f2, type: 3}
+  - {fileID: 127254, guid: b1a171888b1be0e4db1a5638cad8f997, type: 3}
+  - {fileID: 179858, guid: 066c29b35f638204aaa1355e15ed2c4f, type: 3}
+  maxEnemiesToSpawn: 2
+  maxPropsToSpawn: 5
+  spawnAreaSize: {x: 15, y: 15}
+--- !u!114 &499388819084716713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888344263585367539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da93812505cdc89439503a8c077290b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4893261514399651811
 GameObject:
   m_ObjectHideFlags: 0

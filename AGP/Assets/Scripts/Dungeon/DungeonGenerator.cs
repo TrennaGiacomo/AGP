@@ -1,8 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+public enum GeneratorType
+{
+    Linear,
+    Maze
+}
 public class DungeonGenerator : MonoBehaviour
 {
+    [SerializeField] private GeneratorType generatorType = GeneratorType.Linear;
     [SerializeField] private GameObject roomPrefab;
     [SerializeField] private int roomCount = 5;
     [SerializeField] private float roomSpacing = 10f;
@@ -17,10 +23,20 @@ public class DungeonGenerator : MonoBehaviour
         if (dungeonRoot == null)
             dungeonRoot = new GameObject("DungeonRoot").transform;
 
-        generator = new LinearRoomGenerator(roomPrefab, roomSpacing, dungeonRoot);
+        switch (generatorType)
+        {
+            case GeneratorType.Linear:
+                generator = new LinearRoomGenerator(roomPrefab, roomSpacing, dungeonRoot);
+                break;
+
+            case GeneratorType.Maze:
+                generator = new MazeRoomGenerator(roomPrefab, roomSpacing, dungeonRoot);
+                break;
+        }
+
         generator.GenerateDungeon(roomCount);
 
-        Dictionary<Vector2Int, Room> placedRooms = (generator as LinearRoomGenerator).PlacedRooms;
+        Dictionary<Vector2Int, Room> placedRooms = generator.PlacedRooms;
         minimapManager.Init(placedRooms);
 
         var player = playerSpawner.SpawnPlayer();
