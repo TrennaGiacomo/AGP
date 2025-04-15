@@ -5,17 +5,20 @@ public class LinearRoomGenerator : IRoomGenerator
 {
     private GameObject roomPrefab;
     private float spacing;
+    private Transform roomParent;
     private readonly Vector2Int[] directions = new[]
     {
         Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left
     };
 
     private Dictionary<Vector2Int, Room> placedRooms = new();
+    public Dictionary<Vector2Int, Room> PlacedRooms => placedRooms;
 
-    public LinearRoomGenerator(GameObject roomPrefab, float spacing)
+    public LinearRoomGenerator(GameObject roomPrefab, float spacing, Transform roomParent)
     {
         this.roomPrefab = roomPrefab;
         this.spacing = spacing;
+        this.roomParent = roomParent;
     }
 
     public List<Room> GenerateDungeon(int roomCount)
@@ -23,7 +26,7 @@ public class LinearRoomGenerator : IRoomGenerator
         List<Room> rooms = new();
         Vector2Int currentPos = Vector2Int.zero;
 
-        GameObject roomGO = Object.Instantiate(roomPrefab, PositionFromGrid(currentPos), Quaternion.identity);
+        GameObject roomGO = Object.Instantiate(roomPrefab, PositionFromGrid(currentPos), Quaternion.identity,roomParent);
         Room firstRoom = roomGO.GetComponent<Room>();
         firstRoom.GridPosition = currentPos;
         rooms.Add(firstRoom);
@@ -40,7 +43,7 @@ public class LinearRoomGenerator : IRoomGenerator
             }
 
             currentPos = nextPos.Value;
-            GameObject newRoomGO = Object.Instantiate(roomPrefab, PositionFromGrid(currentPos), Quaternion.identity);
+            GameObject newRoomGO = Object.Instantiate(roomPrefab, PositionFromGrid(currentPos), Quaternion.identity, roomParent);
             Room newRoom = newRoomGO.GetComponent<Room>();
             newRoom.GridPosition = currentPos;
             rooms.Add(newRoom);
@@ -67,6 +70,7 @@ public class LinearRoomGenerator : IRoomGenerator
         var biasedDirs = new List<Vector2Int>
         {
             Vector2Int.right,  
+            Vector2Int.right, 
             Vector2Int.right,
             Vector2Int.up,     
             Vector2Int.left,   
