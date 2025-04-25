@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEngine.LightTransport.PostProcessing;
 public class LinearRoomGenerator : IRoomGenerator
 {
     private GameObject roomPrefab;
@@ -47,10 +46,6 @@ public class LinearRoomGenerator : IRoomGenerator
             GameObject newRoomGO = Object.Instantiate(roomPrefab, PositionFromGrid(currentPos), Quaternion.identity, roomParent);
             Room newRoom = newRoomGO.GetComponent<Room>();
             newRoom.GridPosition = currentPos;
-
-            RoomContentSpawner spawner = newRoomGO.GetComponent<RoomContentSpawner>();
-            spawner?.Initialize(currentPos, placedRooms);
-            
             rooms.Add(newRoom);
             placedRooms[currentPos] = newRoom;
         }

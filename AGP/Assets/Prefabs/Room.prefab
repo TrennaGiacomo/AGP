@@ -625,10 +625,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Tiles_02 (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 121644, guid: 67f6358a70929f943ae115f8b4bcf075, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 419854, guid: 67f6358a70929f943ae115f8b4bcf075, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -690,10 +686,6 @@ PrefabInstance:
     - target: {fileID: 121644, guid: 67f6358a70929f943ae115f8b4bcf075, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tiles_02 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 121644, guid: 67f6358a70929f943ae115f8b4bcf075, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 419854, guid: 67f6358a70929f943ae115f8b4bcf075, type: 3}
       propertyPath: m_LocalPosition.x
@@ -904,10 +896,6 @@ PrefabInstance:
     - target: {fileID: 121644, guid: 67f6358a70929f943ae115f8b4bcf075, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tiles_02
-      objectReference: {fileID: 0}
-    - target: {fileID: 121644, guid: 67f6358a70929f943ae115f8b4bcf075, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 419854, guid: 67f6358a70929f943ae115f8b4bcf075, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1192,10 +1180,6 @@ PrefabInstance:
     - target: {fileID: 121644, guid: 67f6358a70929f943ae115f8b4bcf075, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tiles_02 (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 121644, guid: 67f6358a70929f943ae115f8b4bcf075, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 419854, guid: 67f6358a70929f943ae115f8b4bcf075, type: 3}
       propertyPath: m_LocalPosition.x

@@ -80,9 +80,6 @@ public class MazeRoomGenerator : IRoomGenerator
         Room room = roomGO.GetComponent<Room>();
         room.GridPosition = gridPos;
 
-        RoomContentSpawner spawner = room.GetComponent<RoomContentSpawner>();
-        spawner?.Initialize(gridPos, placedRooms);
-
         placedRooms[gridPos] = room;
         openPositions.Add(gridPos);
     }
