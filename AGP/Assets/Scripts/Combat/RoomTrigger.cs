@@ -8,7 +8,6 @@ public class RoomTrigger : MonoBehaviour
     {
         if(!triggered && other.CompareTag("Player"))
         {
-            Debug.Log("RoomHasBeenTriggered");
             triggered = true;
 
             EnemyAI[] enemies = GetComponentsInChildren<EnemyAI>();

@@ -16,7 +16,7 @@ public class EnemyAI : MonoBehaviour
     {
         player = playerTransform;
         active = true;
-        NPCAnimator.SetBool("isActive", active);
+        NPCAnimator?.SetBool("isActive", active);
     }
 
     private void Update()

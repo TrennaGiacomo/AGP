@@ -21,18 +21,27 @@ public class RoomConnector : MonoBehaviour
     {
         GameObject[] wallObjects = { wallNorth, wallSouth, wallEast, wallWest };
 
+        room.wallNorth = wallNorth;
+        room.wallSouth = wallSouth;
+        room.wallEast = wallEast;
+        room.wallWest = wallWest;
+
         for (int i = 0; i < directions.Length; i++)
         {
             Vector2Int dir = directions[i];
-            Vector2Int neighborPos = room.GridPosition + directions[i];
+            Vector2Int neighborPos = room.GridPosition + dir;
 
             bool hasNeighbor = allRooms.ContainsKey(neighborPos);
-            wallObjects[i].SetActive(!hasNeighbor);
 
             if (hasNeighbor)
             {
-                room.Connect(allRooms[neighborPos]);
+                wallObjects[i].SetActive(false);
                 room.ConnectedDirections.Add(dir);
+                room.Connect(allRooms[neighborPos]);
+            }
+            else
+            {
+                wallObjects[i].SetActive(true);
             }
         }
     }

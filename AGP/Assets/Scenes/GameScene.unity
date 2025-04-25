@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a67c4a2c421d04f985a3d726157e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generatorType: 0
+  generatorType: 1
   roomPrefab: {fileID: 4888344263585367539, guid: 9053faa57036d5a43b9d4b015ae86b64, type: 3}
   roomCount: 100
   roomSpacing: 20

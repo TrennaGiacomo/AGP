@@ -221,6 +221,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0cebf3d9976bd4f8a89bd357b1bb0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallNorth: {fileID: 4381999436817420362}
+  wallSouth: {fileID: 4893261514399651811}
+  wallEast: {fileID: 4501098368919442549}
+  wallWest: {fileID: 8057911938531099460}
 --- !u!114 &9110116719128335803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,24 +257,16 @@ MonoBehaviour:
   - {fileID: 6308596301654018182, guid: f3e8c60a101450a4aba9d6f89d6a754f, type: 3}
   - {fileID: 8400592211231082389, guid: 08c1c9d06bf4cb84db8f53d16b5a615f, type: 3}
   propPrefabs:
-  - {fileID: 144150, guid: fb698eb68f15b3845baf425febbee697, type: 3}
-  - {fileID: 175928, guid: 497b6e4d56b9a2d48ac2cd8de829fa88, type: 3}
-  - {fileID: 131778, guid: 74231780cc79e3a45a60bfadd89b76d5, type: 3}
-  - {fileID: 185252, guid: ac72a98c062e432478eb557db53fdc1d, type: 3}
-  - {fileID: 177010, guid: eb999b0b67a4958469eed87f4b9d8d4b, type: 3}
-  - {fileID: 165448, guid: 0cbe9bd2141ef7442a83a849dabf9a87, type: 3}
-  - {fileID: 143182, guid: 8659f67b76d6a314f9e352d6d0c7b43b, type: 3}
-  - {fileID: 141482, guid: 16b5a7abcb1d9cb438b51c495e76eb52, type: 3}
-  - {fileID: 120480, guid: 08cedb31bf7d3414a92316d542661816, type: 3}
-  - {fileID: 158532, guid: 5f453323eb1cb374b98c94ab5004a413, type: 3}
-  - {fileID: 168672, guid: 73b39cdd67614854b808700c7c5d34c7, type: 3}
   - {fileID: 132048, guid: e56ebb4a3996049479a45d35c3854e8c, type: 3}
-  - {fileID: 104528, guid: a80fd84dfabec59439ce7888e35f15f2, type: 3}
-  - {fileID: 127254, guid: b1a171888b1be0e4db1a5638cad8f997, type: 3}
-  - {fileID: 179858, guid: 066c29b35f638204aaa1355e15ed2c4f, type: 3}
+  - {fileID: 146280, guid: ee5004b267742a64aa2093fb4bb3d9c4, type: 3}
+  - {fileID: 168672, guid: 73b39cdd67614854b808700c7c5d34c7, type: 3}
+  - {fileID: 193476, guid: 46c0fb398117dc647a6b7cb2cbba421b, type: 3}
+  - {fileID: 126206, guid: edd815d6828cbde439a3373e1f684ff4, type: 3}
+  - {fileID: 141482, guid: 16b5a7abcb1d9cb438b51c495e76eb52, type: 3}
+  - {fileID: 123038, guid: 8931c8ab0e767cb4d84f62ac124e515c, type: 3}
   maxEnemiesToSpawn: 2
-  maxPropsToSpawn: 5
-  spawnAreaSize: {x: 15, y: 15}
+  maxPropsToSpawn: 3
+  spawnAreaSize: {x: 20, y: 20}
 --- !u!114 &499388819084716713
 MonoBehaviour:
   m_ObjectHideFlags: 0

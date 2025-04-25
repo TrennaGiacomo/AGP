@@ -14,6 +14,8 @@ public class LinearRoomGenerator : IRoomGenerator
 
     private Dictionary<Vector2Int, Room> placedRooms = new();
     public Dictionary<Vector2Int, Room> PlacedRooms => placedRooms;
+    List<RoomContentSpawner> roomSpawners = new();
+
 
     public LinearRoomGenerator(GameObject roomPrefab, float spacing, Transform roomParent)
     {
@@ -48,8 +50,7 @@ public class LinearRoomGenerator : IRoomGenerator
             Room newRoom = newRoomGO.GetComponent<Room>();
             newRoom.GridPosition = currentPos;
 
-            RoomContentSpawner spawner = newRoomGO.GetComponent<RoomContentSpawner>();
-            spawner?.Initialize(currentPos, placedRooms);
+            roomSpawners.Add(newRoomGO.GetComponent<RoomContentSpawner>());
             
             rooms.Add(newRoom);
             placedRooms[currentPos] = newRoom;
@@ -60,6 +61,11 @@ public class LinearRoomGenerator : IRoomGenerator
             var connector = room.GetComponent<RoomConnector>();
             if(connector != null)
                 connector.SetupConnections(room, placedRooms);
+        }
+
+        foreach (RoomContentSpawner spawner in roomSpawners)
+        {
+            spawner?.Initialize();
         }
 
         return rooms;

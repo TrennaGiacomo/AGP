@@ -10,6 +10,8 @@ public class MazeRoomGenerator : IRoomGenerator
     private Dictionary<Vector2Int, Room> placedRooms = new();
     public Dictionary<Vector2Int, Room> PlacedRooms => placedRooms;
     private List<Vector2Int> openPositions = new();
+    List<RoomContentSpawner> pendingSpawners = new();
+
 
     public MazeRoomGenerator(GameObject roomPrefab, float spacing, Transform roomParent)
     {
@@ -69,6 +71,9 @@ public class MazeRoomGenerator : IRoomGenerator
             room.GetComponent<RoomConnector>().SetupConnections(room, placedRooms);
         }
 
+        foreach(var spawner in pendingSpawners)
+            spawner.Initialize();
+
         return new List<Room>(placedRooms.Values);
     }
 
@@ -80,8 +85,9 @@ public class MazeRoomGenerator : IRoomGenerator
         Room room = roomGO.GetComponent<Room>();
         room.GridPosition = gridPos;
 
-        RoomContentSpawner spawner = room.GetComponent<RoomContentSpawner>();
-        spawner?.Initialize(gridPos, placedRooms);
+        var spawner = roomGO.GetComponent<RoomContentSpawner>();
+        if (spawner != null) pendingSpawners.Add(spawner);
+
 
         placedRooms[gridPos] = room;
         openPositions.Add(gridPos);
