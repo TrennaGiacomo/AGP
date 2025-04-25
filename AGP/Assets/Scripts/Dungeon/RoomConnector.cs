@@ -23,14 +23,16 @@ public class RoomConnector : MonoBehaviour
 
         for (int i = 0; i < directions.Length; i++)
         {
+            Vector2Int dir = directions[i];
             Vector2Int neighborPos = room.GridPosition + directions[i];
 
             bool hasNeighbor = allRooms.ContainsKey(neighborPos);
-            wallObjects[i].SetActive(!hasNeighbor); // Hide wall if connected
+            wallObjects[i].SetActive(!hasNeighbor);
 
             if (hasNeighbor)
             {
                 room.Connect(allRooms[neighborPos]);
+                room.ConnectedDirections.Add(dir);
             }
         }
     }
