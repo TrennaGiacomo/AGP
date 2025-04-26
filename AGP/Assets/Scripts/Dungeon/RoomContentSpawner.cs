@@ -4,7 +4,6 @@ using UnityEngine;
 public class RoomContentSpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
-    [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private GameObject[] propPrefabs;
     [SerializeField] private int maxEnemiesToSpawn = 2;
     [SerializeField] private int maxPropsToSpawn = 3;
@@ -24,7 +23,7 @@ public class RoomContentSpawner : MonoBehaviour
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             Vector3 pos = GetRandomPointInRoom();
-            Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], pos, Quaternion.identity, transform);
+            EnemyPool.Instance.GetEnemy(GetRandomPointInRoom());
         }
     }
 

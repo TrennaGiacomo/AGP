@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cullDistance: 25
-  checkInterval: 0.2
+  checkInterval: 0.4
 --- !u!1 &4893261514399651811
 GameObject:
   m_ObjectHideFlags: 0

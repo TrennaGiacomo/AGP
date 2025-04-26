@@ -58,8 +58,11 @@ public class Health : MonoBehaviour
     private void Die()
     {
         if(healthBarUI != null)
-            Destroy(healthBarUI.gameObject);
-
-        Destroy(gameObject);
+        {
+            if(GetComponent<EnemyAI>() != null) 
+                EnemyPool.Instance.ReturnEnemy(gameObject);
+            else
+             Destroy(healthBarUI.gameObject);
+        }
     }
 }

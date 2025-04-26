@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,10 +21,19 @@ public class EnemyAI : MonoBehaviour
     private Vector3 spawnPosition;
     private float attackTimer = 0f;
 
+
+    //Optimization stuff
+    private float sleepDistance = 15f;
+    private float wakeDistance = 12f;
+    private bool isSleeping = false;
+    private Collider col;
+
     private void Start()
     {
+        EnemyManager.Instance.RegisterEnemy(this);
         NPCAnimator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        col = GetComponent<Collider>();
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         spawnPosition = transform.position;
 
@@ -34,7 +44,40 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if(EnemyManager.Instance != null) EnemyManager.Instance.UnregisterEnemy(this);
+    }
+
+    public void CheckSleepState(Vector3 playerPos)
+    {
+        var distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if(!isSleeping && distanceToPlayer > sleepDistance) Sleep();
+        else if (isSleeping && distanceToPlayer < wakeDistance) WakeUp();
+    }
+
     private void Update()
+    {      
+        if(!isSleeping) RunAI();        
+    }
+
+    private void Sleep()
+    {
+        isSleeping = true;
+        NPCAnimator.enabled = false;
+        agent.enabled = false;
+        col.enabled = false;
+    }
+
+    private void WakeUp()
+    {
+        isSleeping = false;
+        NPCAnimator.enabled = true;
+        agent.enabled = true;
+        col.enabled = true;
+    }
+
+    private void RunAI()
     {
         if (player == null) return;
 
