@@ -280,6 +280,11 @@ MonoBehaviour:
   fullMapUI: {fileID: 750519566}
   roomSpacing: {x: 50, y: 50}
   visibleRadius: 1000
+--- !u!4 &126532127 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8489768174594425696, guid: f3b982d91cd3ef747bbb4191ab1ca7a7, type: 3}
+  m_PrefabInstance: {fileID: 743145893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &287122437
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,9 +518,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a67c4a2c421d04f985a3d726157e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generatorType: 0
+  generatorType: 1
   roomPrefab: {fileID: 4888344263585367539, guid: 9053faa57036d5a43b9d4b015ae86b64, type: 3}
-  roomCount: 300
+  roomCount: 100
   roomSpacing: 10
   playerSpawner: {fileID: 1060204350}
   minimapManager: {fileID: 55993262}
@@ -526,7 +531,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1615533730}
     m_Modifications:
     - target: {fileID: 1912693240004586756, guid: f3b982d91cd3ef747bbb4191ab1ca7a7, type: 3}
       propertyPath: m_Name
@@ -550,15 +555,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8489768174594425696, guid: f3b982d91cd3ef747bbb4191ab1ca7a7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8489768174594425696, guid: f3b982d91cd3ef747bbb4191ab1ca7a7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8489768174594425696, guid: f3b982d91cd3ef747bbb4191ab1ca7a7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8489768174594425696, guid: f3b982d91cd3ef747bbb4191ab1ca7a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1085,6 +1090,7 @@ Transform:
   - {fileID: 1870541412}
   - {fileID: 1555910565}
   - {fileID: 2044660418}
+  - {fileID: 126532127}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1654672398
@@ -1281,7 +1287,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 6308596301654018182, guid: f3e8c60a101450a4aba9d6f89d6a754f, type: 3}
   - {fileID: 8400592211231082389, guid: 08c1c9d06bf4cb84db8f53d16b5a615f, type: 3}
-  poolSize: 50
+  poolSize: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1291,4 +1297,3 @@ SceneRoots:
   - {fileID: 1615533730}
   - {fileID: 38912185}
   - {fileID: 1452327187}
-  - {fileID: 743145893}

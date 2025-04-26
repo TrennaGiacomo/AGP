@@ -231,9 +231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec78d446a17a06940af2368d9403cdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 6308596301654018182, guid: f3e8c60a101450a4aba9d6f89d6a754f, type: 3}
-  - {fileID: 8400592211231082389, guid: 08c1c9d06bf4cb84db8f53d16b5a615f, type: 3}
   propPrefabs:
   - {fileID: 1747199409841599630, guid: 5abbb7fdb5b3a3f409a026291d0d94a3, type: 3}
   - {fileID: 6785197883094232539, guid: 95b9880921e758b4eb8ecd725a9567a9, type: 3}
@@ -243,7 +240,7 @@ MonoBehaviour:
   - {fileID: 6192696471657691612, guid: 63f340bfeeff5924b877cafe7f0ba1b2, type: 3}
   - {fileID: 3395947978620522678, guid: 1c5340cc011d66541a39c9c102ab3e14, type: 3}
   maxEnemiesToSpawn: 1
-  maxPropsToSpawn: 3
+  maxPropsToSpawn: 4
   spawnAreaSize: {x: 10, y: 10}
 --- !u!114 &4815760232451213504
 MonoBehaviour:

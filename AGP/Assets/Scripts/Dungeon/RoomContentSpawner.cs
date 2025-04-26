@@ -22,8 +22,7 @@ public class RoomContentSpawner : MonoBehaviour
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Vector3 pos = GetRandomPointInRoom();
-            EnemyPool.Instance.GetEnemy(GetRandomPointInRoom());
+            EnemyPool.Instance.GetEnemy(GetRandomPointInRoom(), transform);
         }
     }
 
