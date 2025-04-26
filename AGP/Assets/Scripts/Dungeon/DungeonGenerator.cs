@@ -14,6 +14,7 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private float roomSpacing = 10f;
     [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private MinimapManager minimapManager;
+    [SerializeField] private NavMeshBaker navMeshBaker;
     
     private Transform dungeonRoot;
     private IRoomGenerator generator;
@@ -35,6 +36,7 @@ public class DungeonGenerator : MonoBehaviour
         }
 
         generator.GenerateDungeon(roomCount);
+        navMeshBaker.BakeNavMesh();    
 
         Dictionary<Vector2Int, Room> placedRooms = generator.PlacedRooms;
         minimapManager.Init(placedRooms);
@@ -50,8 +52,7 @@ public class DungeonGenerator : MonoBehaviour
         {
             Vector3 playerPos = player.transform.position;
 
-            Vector2Int gridPos = new Vector2Int
-            (
+            Vector2Int gridPos = new(
                 Mathf.RoundToInt(playerPos.x / roomSpacing),
                 Mathf.RoundToInt(playerPos.z / roomSpacing)
             );

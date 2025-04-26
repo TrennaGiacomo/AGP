@@ -1204,6 +1204,8 @@ GameObject:
   - component: {fileID: 8330259819690062382}
   - component: {fileID: -7483712508907774122}
   - component: {fileID: 3129399220080823206}
+  - component: {fileID: 1652047439875997191}
+  - component: {fileID: 5877470024295690696}
   m_Layer: 0
   m_Name: Knight_Female
   m_TagString: Untagged
@@ -1295,9 +1297,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &3129399220080823206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,6 +1313,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  rotationSpeed: 20
+  detectionRadius: 5
+  maxRange: 10
+  damageToPlayer: 10
+  attackRange: 1.5
+  attackCooldown: 1.5
+--- !u!114 &1652047439875997191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6308596301654018182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07cceb0ab5aeed6468e71257d3ff9212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthBarPrefab: {fileID: 2058431911404192518, guid: c7f4ff24a94b0834abb16ac314692c49, type: 3}
+  healthBarOffset: {x: 0, y: 3, z: 0}
+--- !u!195 &5877470024295690696
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6308596301654018182}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 10
+  avoidancePriority: 50
+  m_AngularSpeed: 400
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6349798990675925855
 GameObject:
   m_ObjectHideFlags: 0

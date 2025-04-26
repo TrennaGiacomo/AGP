@@ -8,10 +8,8 @@ public class RoomContentSpawner : MonoBehaviour
     [SerializeField] private GameObject[] propPrefabs;
     [SerializeField] private int maxEnemiesToSpawn = 2;
     [SerializeField] private int maxPropsToSpawn = 3;
-    [SerializeField] private Vector2 spawnAreaSize = new Vector2(6f, 6f);
+    [SerializeField] private Vector2 spawnAreaSize = new(6f, 6f);
 
-    private Vector2Int gridPos;
-    private Dictionary<Vector2Int,Room> placedRooms;
 
     public void Initialize()
     {
@@ -32,38 +30,68 @@ public class RoomContentSpawner : MonoBehaviour
 
     private void SpawnProps()
     {
-        Room room = GetComponent<Room>();
-        if (room == null) return;
+        if (!TryGetComponent<Room>(out var room)) return;
 
         Vector2 roomSize = GetRoomSize();
         int propsToSpawn = Random.Range(0, maxPropsToSpawn);
-        List<GameObject> spawned = new();
+        List<Vector3> occupiedPositions = new();
 
         for (int i = 0; i < propsToSpawn; i++)
         {
-            var prefab = GetUniqueRandom(propPrefabs, spawned);
+            var prefab = GetUniqueRandom(propPrefabs);
             if (prefab == null) continue;
 
             GameObject instance = Instantiate(prefab);
-            instance.transform.localScale = prefab.transform.localScale;
             instance.transform.SetParent(transform);
 
-            var placeable = instance.GetComponent<IPlaceable>();
-            if (placeable != null)
+            if (instance.TryGetComponent<IPlaceable>(out var placeable))
             {
-                placeable.Place(room, roomSize);
-            }
+                bool success = TryPlaceWithoutOverlap(placeable, room, roomSize, occupiedPositions);
 
-            spawned.Add(prefab);
+                if (!success)
+                {
+                    Destroy(instance);
+                }
+            }
         }
     }
 
-    private GameObject GetUniqueRandom(GameObject[] options, List<GameObject> alreadyPicked)
+    private bool TryPlaceWithoutOverlap(IPlaceable placeable, Room room, Vector2 roomSize, List<Vector3> occupiedPositions)
     {
-        List<GameObject> valid = new(options);
-        valid.RemoveAll(p => alreadyPicked.Contains(p));
-        if (valid.Count == 0) return null;
-        return valid[Random.Range(0, valid.Count)];
+        const int MAXATTEMPTS = 10;
+        const float MINSEPARATION = 1.5f;
+
+        for (int attempt = 0; attempt < MAXATTEMPTS; attempt++)
+        {
+            placeable.Place(room, roomSize);
+
+            Vector3 newPos = placeable.GetPosition();
+
+            bool overlaps = false;
+            foreach(var pos in occupiedPositions)
+            {
+                if(Vector3.Distance(newPos, pos) < MINSEPARATION)
+                {
+                    overlaps = true;
+                    break;
+                }
+            }    
+
+            if(!overlaps)
+            {
+                occupiedPositions.Add(newPos);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private GameObject GetUniqueRandom(GameObject[] options)
+    {
+        if (options == null || options.Length == 0)
+            return null;
+
+        return options[Random.Range(0, options.Length)];
     }
 
     private Vector2 GetRoomSize()
@@ -75,7 +103,7 @@ public class RoomContentSpawner : MonoBehaviour
             return new Vector2(bounds.size.x, bounds.size.z);
         }
 
-        return new Vector2(20f, 20f);
+        return new Vector2(10f, 10f);
     }
 
     private Vector3 GetRandomPointInRoom()

@@ -8,7 +8,7 @@ public class PlayerSpawner : MonoBehaviour
 
     public GameObject SpawnPlayer()
     {
-        Vector3 spawnPos = new Vector3(spawnRoomPosition.x * roomSpacing, 1f ,spawnRoomPosition.y * roomSpacing);
+        Vector3 spawnPos = new(spawnRoomPosition.x * roomSpacing, 0f,spawnRoomPosition.y * roomSpacing);
         var player = Instantiate(playerPrefab, spawnPos, Quaternion.identity);
         
         

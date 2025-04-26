@@ -15,4 +15,9 @@ public class Table : MonoBehaviour, IPlaceable
         
         transform.SetLocalPositionAndRotation(localPos, Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
     }
+
+    public Vector3 GetPosition() 
+    {
+        return transform.position;
+    }
 }
