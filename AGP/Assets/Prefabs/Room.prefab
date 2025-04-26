@@ -257,8 +257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf99ffa5844787458bbcb5ccb88dfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cullDistance: 50
-  player: {fileID: 116711637051954225, guid: d29db52b7ba5ded4a95b47d290df17aa, type: 3}
+  cullDistance: 25
+  checkInterval: 0.2
 --- !u!1 &4893261514399651811
 GameObject:
   m_ObjectHideFlags: 0
