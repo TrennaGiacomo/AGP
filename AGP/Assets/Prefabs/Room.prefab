@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 843948390770648257}
   - component: {fileID: 9110116719128335803}
   - component: {fileID: -8092071675889768053}
+  - component: {fileID: 4815760232451213504}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -244,6 +245,20 @@ MonoBehaviour:
   maxEnemiesToSpawn: 1
   maxPropsToSpawn: 3
   spawnAreaSize: {x: 10, y: 10}
+--- !u!114 &4815760232451213504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888344263585367539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf99ffa5844787458bbcb5ccb88dfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cullDistance: 50
+  player: {fileID: 116711637051954225, guid: d29db52b7ba5ded4a95b47d290df17aa, type: 3}
 --- !u!1 &4893261514399651811
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,21 +5,24 @@ public class HealthBarUI : MonoBehaviour
 {
     [SerializeField] private Slider fill;
 
+    private Camera cam;
+
+    private void Start()
+    {
+        cam = Camera.main;
+    }
     public void SetHealth(float percent)
     {
         fill.value = percent;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (Camera.main == null) return;
+        if (cam == null) return;
 
-        Vector3 camForward = Camera.main.transform.forward;
-        camForward.y = 0;
+        Vector3 dir = transform.position - cam.transform.position;
+        dir.y = 0;  
 
-        if (camForward.sqrMagnitude > 0.001f)
-        {
-            transform.rotation = Quaternion.LookRotation(camForward);
-        }
+        transform.rotation = Quaternion.LookRotation(dir);  
     }
 }
