@@ -7,12 +7,14 @@ public class VisualCuller : MonoBehaviour
 
     private Transform player;
     private Renderer[] renderers;
+    private Collider[] colliders;
     private float checkTimer;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         renderers = GetComponentsInChildren<Renderer>(true);
+        colliders = GetComponentsInChildren<Collider>(true);
         checkTimer = Random.Range(0f, checkInterval);
     }
 
@@ -33,10 +35,10 @@ public class VisualCuller : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.position);
         bool shouldBeVisible = distance <= cullDistance;
 
-        foreach (var rend in renderers)
-        {
-            if (rend != null)
-                rend.enabled = shouldBeVisible;
-        }
+        foreach (var rend in renderers) 
+            if (rend != null) rend.enabled = shouldBeVisible;
+
+        foreach (var col in colliders) 
+            if(col != null) col.enabled = shouldBeVisible;
     }
 }
