@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class MinimapManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class MinimapManager : MonoBehaviour
 
     private Dictionary<Vector2Int, GameObject> minimapRoomIcons = new();
     private Dictionary<Vector2Int, GameObject> fullmapRoomIcons = new();
+    private HashSet<Vector2Int> visitedRooms = new();
 
     private RectTransform playerIcon;
     private RectTransform activeContent;
@@ -102,5 +104,26 @@ public class MinimapManager : MonoBehaviour
             gridPos.x * roomSpacing.x,
             gridPos.y * roomSpacing.y
         );
+    }
+
+    public void MarkRoomVisited(Vector2Int gridPos)
+    {
+        Debug.Log("Trying to change color");
+
+        if(visitedRooms.Contains(gridPos)) return;
+
+        visitedRooms.Add(gridPos);  
+
+        if(minimapRoomIcons.TryGetValue(gridPos, out var miniIcon))
+        {
+            var image = miniIcon.GetComponent<UnityEngine.UI.Image>();
+            if(image != null) image.color = Color.yellow;
+        }
+
+        if(fullmapRoomIcons.TryGetValue(gridPos, out var fullIcon))
+        {
+            var image = fullIcon.GetComponent<UnityEngine.UI.Image>();
+            if(image != null) image.color = Color.yellow;
+        }
     }
 }

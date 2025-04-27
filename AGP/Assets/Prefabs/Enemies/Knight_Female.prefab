@@ -1333,7 +1333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBarPrefab: {fileID: 2058431911404192518, guid: c7f4ff24a94b0834abb16ac314692c49, type: 3}
-  healthBarOffset: {x: 0, y: 3, z: 0}
+  healthBarOffset: {x: 0, y: 2, z: 0}
 --- !u!195 &5877470024295690696
 NavMeshAgent:
   m_ObjectHideFlags: 0

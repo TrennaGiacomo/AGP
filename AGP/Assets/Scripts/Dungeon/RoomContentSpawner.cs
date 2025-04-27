@@ -57,7 +57,7 @@ public class RoomContentSpawner : MonoBehaviour
     private bool TryPlaceWithoutOverlap(IPlaceable placeable, Room room, Vector2 roomSize, List<Vector3> occupiedPositions)
     {
         const int MAXATTEMPTS = 10;
-        const float MINSEPARATION = 1.5f;
+        const float MINSEPARATION = 3f;
 
         for (int attempt = 0; attempt < MAXATTEMPTS; attempt++)
         {

@@ -59,10 +59,9 @@ public class Health : MonoBehaviour
     {
         if(healthBarUI != null)
         {
-            if(GetComponent<EnemyAI>() != null) 
-                EnemyPool.Instance.ReturnEnemy(gameObject);
-            else
-             Destroy(healthBarUI.gameObject);
+            if(GetComponent<EnemyAI>()) EnemyPool.Instance.ReturnEnemy(gameObject);
+            else if(GetComponent<PlayerController>()) SceneManagerPersistent.Instance.EndGame(false);
+            else Destroy(healthBarUI.gameObject);
         }
     }
 }

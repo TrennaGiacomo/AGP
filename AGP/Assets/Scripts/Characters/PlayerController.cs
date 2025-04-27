@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
     private Camera cam;
     private CharacterController controller;
+    private MinimapManager minimapManager;
     private float shootCooldownTimer = 0f;
 
     private void Start()
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator = GetComponentInChildren<Animator>();
         cam = Camera.main;
         controller = GetComponent<CharacterController>();
+        minimapManager = FindAnyObjectByType<MinimapManager>();
     }
 
     private void Update()
@@ -78,5 +80,11 @@ public class PlayerController : MonoBehaviour
             GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.LookRotation(direction));
             projectile.GetComponent<Projectile>().Init(direction, gameObject);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponentInParent<Room>() is Room room)
+            minimapManager.MarkRoomVisited(room.GridPosition);
     }
 }

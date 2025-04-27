@@ -63,6 +63,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Sleep()
     {
+        if(returningToSpawn) return;
+
         isSleeping = true;
         NPCAnimator.enabled = false;
         agent.enabled = false;
@@ -156,7 +158,7 @@ public class EnemyAI : MonoBehaviour
             agent.isStopped = false;
             agent.SetDestination(spawnPosition);
 
-            if (Vector3.Distance(transform.position, spawnPosition) < 1f)
+            if (Vector3.Distance(transform.position, spawnPosition) < 1.5f)
             {
                 returningToSpawn = false;
                 active = false;
