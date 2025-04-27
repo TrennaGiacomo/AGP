@@ -108,10 +108,7 @@ public class MinimapManager : MonoBehaviour
 
     public void MarkRoomVisited(Vector2Int gridPos)
     {
-        Debug.Log("Trying to change color");
-
         if(visitedRooms.Contains(gridPos)) return;
-
         visitedRooms.Add(gridPos);  
 
         if(minimapRoomIcons.TryGetValue(gridPos, out var miniIcon))

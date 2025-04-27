@@ -19,10 +19,9 @@ public class EnemyAI : MonoBehaviour
     private Vector3 spawnPosition;
     private float attackTimer = 0f;
 
-
     //Optimization stuff
-    private float sleepDistance = 15f;
-    private float wakeDistance = 12f;
+    private float sleepDistance = 17f;
+    private float wakeDistance = 13f;
     private bool isSleeping = false;
     private Collider col;
 
@@ -75,6 +74,12 @@ public class EnemyAI : MonoBehaviour
         NPCAnimator.enabled = true;
         agent.enabled = true;
         col.enabled = true;
+
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer <= detectionRadius)
+        {
+            Activate();
+        }
     }
 
     private void RunAI()

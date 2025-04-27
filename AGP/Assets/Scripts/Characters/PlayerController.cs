@@ -15,12 +15,16 @@ public class PlayerController : MonoBehaviour
     private MinimapManager minimapManager;
     private float shootCooldownTimer = 0f;
 
+    private void Awake()
+    {
+        minimapManager = FindAnyObjectByType<MinimapManager>();
+    }
+
     private void Start()
     {
         playerAnimator = GetComponentInChildren<Animator>();
         cam = Camera.main;
         controller = GetComponent<CharacterController>();
-        minimapManager = FindAnyObjectByType<MinimapManager>();
     }
 
     private void Update()
