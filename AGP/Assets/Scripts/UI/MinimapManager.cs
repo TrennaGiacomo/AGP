@@ -29,6 +29,8 @@ public class MinimapManager : MonoBehaviour
     private RectTransform playerIcon;
     private RectTransform activeContent;
     private bool isMinimapActive = true;
+    private Color visitedColor = new(0.686f, 0.502f, 0.310f, 1f);
+
 
     private void Awake()
     {
@@ -112,10 +114,10 @@ public class MinimapManager : MonoBehaviour
         visitedRooms.Add(gridPos);  
 
         if(minimapRoomIcons.TryGetValue(gridPos, out var miniIcon))
-            if(miniIcon.TryGetComponent<UnityEngine.UI.Image>(out var image)) image.color = Color.yellow;
+            if(miniIcon.TryGetComponent<UnityEngine.UI.Image>(out var image)) image.color = visitedColor;
         
 
         if(fullmapRoomIcons.TryGetValue(gridPos, out var fullIcon))
-            if(fullIcon.TryGetComponent<UnityEngine.UI.Image>(out var image)) image.color = Color.yellow;
+            if(fullIcon.TryGetComponent<UnityEngine.UI.Image>(out var image)) image.color = visitedColor;
     }
 }

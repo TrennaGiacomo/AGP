@@ -94,5 +94,6 @@ public class DungeonGenerator : MonoBehaviour
         GameObject winTriggerInstance = Object.Instantiate(winTriggerPrefab);
         winTriggerInstance.transform.SetParent(selectedRoom.transform, false);
         winTriggerInstance.transform.localPosition = Vector3.zero;
+        winTriggerInstance.SetActive(true); 
     }
 }
