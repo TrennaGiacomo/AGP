@@ -3,14 +3,19 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [Header("Enemy Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 20f;
-    [SerializeField] private float detectionRadius = 10f;
-    [SerializeField] private float maxRange = 20f;
+
+    [Header("Enemy Combat Settings")]
     [SerializeField] private int damageToPlayer = 10;
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private float attackCooldown = 1.5f;
 
+    [Header("Detection Settings")]
+    [SerializeField] private float detectionRadius = 10f;
+    [SerializeField] private float maxRange = 20f;
+    
     private bool active = false;
     private NavMeshAgent agent;
     private bool returningToSpawn = false;
@@ -18,10 +23,10 @@ public class EnemyAI : MonoBehaviour
     private Animator NPCAnimator;
     private Vector3 spawnPosition;
     private float attackTimer = 0f;
-
-    //Optimization stuff
-    private float sleepDistance = 17f;
-    private float wakeDistance = 13f;
+    
+    //Optimization Stuff
+    private readonly float sleepDistance = 17f;
+    private readonly float wakeDistance = 13f;
     private bool isSleeping = false;
     private Collider col;
 
@@ -76,10 +81,9 @@ public class EnemyAI : MonoBehaviour
         col.enabled = true;
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        
         if (distanceToPlayer <= detectionRadius)
-        {
             Activate();
-        }
     }
 
     private void RunAI()

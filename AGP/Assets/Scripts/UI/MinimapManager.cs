@@ -19,7 +19,7 @@ public class MinimapManager : MonoBehaviour
     [SerializeField] private GameObject fullMapUI;
 
     [Header("Layout")]
-    [SerializeField] private Vector2 roomSpacing = new Vector2(24, 24);
+    [SerializeField] private Vector2 roomSpacing = new(24, 24);
     [SerializeField] private int visibleRadius = 3;
 
     private Dictionary<Vector2Int, GameObject> minimapRoomIcons = new();
@@ -112,15 +112,10 @@ public class MinimapManager : MonoBehaviour
         visitedRooms.Add(gridPos);  
 
         if(minimapRoomIcons.TryGetValue(gridPos, out var miniIcon))
-        {
-            var image = miniIcon.GetComponent<UnityEngine.UI.Image>();
-            if(image != null) image.color = Color.yellow;
-        }
+            if(miniIcon.TryGetComponent<UnityEngine.UI.Image>(out var image)) image.color = Color.yellow;
+        
 
         if(fullmapRoomIcons.TryGetValue(gridPos, out var fullIcon))
-        {
-            var image = fullIcon.GetComponent<UnityEngine.UI.Image>();
-            if(image != null) image.color = Color.yellow;
-        }
+            if(fullIcon.TryGetComponent<UnityEngine.UI.Image>(out var image)) image.color = Color.yellow;
     }
 }

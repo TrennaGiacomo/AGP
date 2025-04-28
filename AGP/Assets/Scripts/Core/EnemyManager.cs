@@ -5,9 +5,9 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager Instance;
 
-    private List<EnemyAI> enemies = new List<EnemyAI>();
+    private readonly List<EnemyAI> enemies = new();
     private Transform player;
-    private float checkInterval = 0.5f;
+    private readonly float checkInterval = 0.5f;
 
     private void Awake()
     {

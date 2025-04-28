@@ -59,7 +59,7 @@ public class DungeonGenerator : MonoBehaviour
 
             minimapManager.UpdatePlayerPosition(gridPos);
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.4f);
         }
     }
 }

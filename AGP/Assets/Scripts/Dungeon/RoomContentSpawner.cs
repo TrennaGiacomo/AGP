@@ -31,12 +31,12 @@ public class RoomContentSpawner : MonoBehaviour
         if (!TryGetComponent<Room>(out var room)) return;
 
         Vector2 roomSize = GetRoomSize();
-        int propsToSpawn = Random.Range(0, maxPropsToSpawn);
+        int numberOfPropsToSpawn = Random.Range(0, maxPropsToSpawn);
         List<Vector3> occupiedPositions = new();
 
-        for (int i = 0; i < propsToSpawn; i++)
+        for (int i = 0; i < numberOfPropsToSpawn; i++)
         {
-            var prefab = GetUniqueRandom(propPrefabs);
+            var prefab = GetRandomProp(propPrefabs);
             if (prefab == null) continue;
 
             GameObject instance = Instantiate(prefab);
@@ -84,7 +84,7 @@ public class RoomContentSpawner : MonoBehaviour
         return false;
     }
 
-    private GameObject GetUniqueRandom(GameObject[] options)
+    private GameObject GetRandomProp(GameObject[] options)
     {
         if (options == null || options.Length == 0)
             return null;

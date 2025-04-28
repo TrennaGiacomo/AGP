@@ -28,7 +28,7 @@ public class MazeRoomGenerator : IRoomGenerator
         while (placedRooms.Count < roomCount && openPositions.Count > 0)
         {
             Vector2Int current = (Random.value < 0.8f) 
-                ? openPositions[openPositions.Count - 1] 
+                ? openPositions[^1] 
                 : openPositions[Random.Range(0, openPositions.Count)];
 
             List<Vector2Int> directions = GetShuffledDirections();

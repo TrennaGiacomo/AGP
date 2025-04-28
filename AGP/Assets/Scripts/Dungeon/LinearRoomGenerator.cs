@@ -3,17 +3,17 @@ using UnityEngine;
 using System.Linq;
 public class LinearRoomGenerator : IRoomGenerator
 {
-    private GameObject roomPrefab;
-    private float spacing;
-    private Transform roomParent;
+    private readonly GameObject roomPrefab;
+    private readonly float spacing;
+    private readonly Transform roomParent;
     private readonly Vector2Int[] directions = new[]
     {
         Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left
     };
 
-    private Dictionary<Vector2Int, Room> placedRooms = new();
+    readonly Dictionary<Vector2Int, Room> placedRooms = new();
     public Dictionary<Vector2Int, Room> PlacedRooms => placedRooms;
-    List<RoomContentSpawner> roomSpawners = new();
+    readonly List<RoomContentSpawner> roomSpawners = new();
 
 
     public LinearRoomGenerator(GameObject roomPrefab, float spacing, Transform roomParent)
@@ -56,17 +56,13 @@ public class LinearRoomGenerator : IRoomGenerator
         }
 
         foreach (Room room in rooms)
-        {
-            var connector = room.GetComponent<RoomConnector>();
-            if(connector != null)
+            if(room.TryGetComponent<RoomConnector>(out var connector))
                 connector.SetupConnections(room, placedRooms);
-        }
+        
 
         foreach (RoomContentSpawner spawner in roomSpawners)
-        {
             spawner?.Initialize();
-        }
-
+        
         return rooms;
     }
 
