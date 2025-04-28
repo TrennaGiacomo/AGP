@@ -36,7 +36,7 @@ public class RoomContentSpawner : MonoBehaviour
 
         for (int i = 0; i < numberOfPropsToSpawn; i++)
         {
-            var prefab = GetRandomProp(propPrefabs);
+            var prefab = propPrefabs[Random.Range(0, propPrefabs.Length)];
             if (prefab == null) continue;
 
             GameObject instance = Instantiate(prefab);
@@ -83,15 +83,7 @@ public class RoomContentSpawner : MonoBehaviour
         }
         return false;
     }
-
-    private GameObject GetRandomProp(GameObject[] options)
-    {
-        if (options == null || options.Length == 0)
-            return null;
-
-        return options[Random.Range(0, options.Length)];
-    }
-
+    
     private Vector2 GetRoomSize()
     {
         var floor = GetComponentInChildren<Renderer>();
