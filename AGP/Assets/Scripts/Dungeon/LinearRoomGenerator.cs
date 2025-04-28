@@ -6,11 +6,6 @@ public class LinearRoomGenerator : IRoomGenerator
     private readonly GameObject roomPrefab;
     private readonly float spacing;
     private readonly Transform roomParent;
-    private readonly Vector2Int[] directions = new[]
-    {
-        Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left
-    };
-
     readonly Dictionary<Vector2Int, Room> placedRooms = new();
     public Dictionary<Vector2Int, Room> PlacedRooms => placedRooms;
     readonly List<RoomContentSpawner> roomSpawners = new();
