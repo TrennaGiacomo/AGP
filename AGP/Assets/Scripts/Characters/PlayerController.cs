@@ -91,5 +91,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.GetComponentInParent<Room>() is Room room)
             minimapManager.MarkRoomVisited(room.GridPosition);
+        if(other.CompareTag("Win"))
+            SceneManagerPersistent.Instance.EndGame(true);
     }
 }

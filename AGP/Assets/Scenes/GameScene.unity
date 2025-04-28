@@ -950,6 +950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generatorType: 1
   roomPrefab: {fileID: 4888344263585367539, guid: 9053faa57036d5a43b9d4b015ae86b64, type: 3}
+  winTriggerPrefab: {fileID: 2176305385252288617, guid: b69c18eaf3886f945891a34b3a98d5b2, type: 3}
   roomCount: 100
   roomSpacing: 10
   playerSpawner: {fileID: 1060204350}
