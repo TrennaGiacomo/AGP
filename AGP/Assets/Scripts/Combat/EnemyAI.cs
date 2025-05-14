@@ -23,6 +23,7 @@ public class EnemyAI : MonoBehaviour, IDeathHandler
     private Animator NPCAnimator;
     private Vector3 spawnPosition;
     private float attackTimer = 0f;
+    private IEnemyRegistry registry;
     
     //Optimization Stuff
     private readonly float sleepDistance = 17f;
@@ -32,7 +33,7 @@ public class EnemyAI : MonoBehaviour, IDeathHandler
 
     private void Start()
     {
-        EnemyManager.Instance.RegisterEnemy(this);
+        registry?.RegisterEnemy(this);
         NPCAnimator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         col = GetComponent<Collider>();
@@ -46,9 +47,14 @@ public class EnemyAI : MonoBehaviour, IDeathHandler
         }
     }
 
+    public void SetRegistry(IEnemyRegistry enemyRegistry)
+    {
+        registry = enemyRegistry;
+    }
+
     private void OnDestroy()
     {
-        if(EnemyManager.Instance != null) EnemyManager.Instance.UnregisterEnemy(this);
+        registry?.UnregisterEnemy(this);
     }
 
     public void CheckSleepState(Vector3 playerPos)

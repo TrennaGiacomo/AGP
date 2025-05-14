@@ -65,7 +65,7 @@ public class Health : MonoBehaviour
     {
         deathHandler?.HandleDeath();
         
-        if(healthBarUI != null && !(deathHandler is MonoBehaviour))
+        if(healthBarUI != null && deathHandler is not MonoBehaviour)
         {
             Destroy(healthBarUI.gameObject);
         }

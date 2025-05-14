@@ -5,9 +5,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float shootCooldown = 0.5f;
-    private float shootCooldownTimer = 0f;
-
-    
+    private float shootCooldownTimer = 0f;    
     private Camera cam;
 
     private void Start()

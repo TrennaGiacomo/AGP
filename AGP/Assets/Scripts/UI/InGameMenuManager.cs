@@ -25,13 +25,13 @@ public class InGameMenuManager : MonoBehaviour
     private void OpenMenu() 
     {
         pauseMenu.SetActive(true);
-        SceneManagerPersistent.Instance.SetPause(true);
+        SceneManagerPersistent.Instance.onPauseToggled.Invoke(true);
     }
 
     private void CloseMenu()
     {
         pauseMenu.SetActive(false);
-        SceneManagerPersistent.Instance.SetPause(false);
+        SceneManagerPersistent.Instance.onPauseToggled.Invoke(false);
     }
 
     private void ActivateEndGameScreen(bool win)

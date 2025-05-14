@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleMovement();
-        
     }
 
     private void HandleMovement()

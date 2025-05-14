@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 public class SceneManagerPersistent : MonoBehaviour
 {
     public static SceneManagerPersistent Instance;
+
+    public UnityEvent<string> onSceneChangeRequest = new UnityEvent<string>();
+    public UnityEvent onQuitRequest = new UnityEvent();
+    public UnityEvent<bool> onPauseToggled = new UnityEvent<bool>();
     public UnityEvent<bool> onGameEnded;
     private bool isPaused = false;
     private NavMeshAgent[] allAgents;
@@ -16,11 +20,12 @@ public class SceneManagerPersistent : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            
+            onSceneChangeRequest.AddListener(LoadScene);
+            onQuitRequest.AddListener(Quit);
+            onPauseToggled.AddListener(SetPause);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        else Destroy(gameObject);
     }
 
     public void LoadScene(string sceneName) 

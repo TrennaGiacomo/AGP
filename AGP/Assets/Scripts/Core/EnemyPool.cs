@@ -19,6 +19,11 @@ public class EnemyPool : MonoBehaviour
             GameObject enemy = Instantiate(enemyToSpawn, transform);
             enemy.SetActive(false);
             enemyPool.Enqueue(enemy);
+            
+            var ai = enemy.GetComponent<EnemyAI>();
+            if (ai != null)
+                ai.SetRegistry(EnemyManager.Instance);
+
         }
     }
 

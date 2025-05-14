@@ -4,11 +4,11 @@ public class MainMenuManager : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManagerPersistent.Instance.LoadScene("GameScene");
+        SceneManagerPersistent.Instance.onSceneChangeRequest.Invoke("GameScene");
     }
 
     public void QuitGame()
     {
-        SceneManagerPersistent.Instance.Quit();
+        SceneManagerPersistent.Instance.onQuitRequest.Invoke();
     }
 }

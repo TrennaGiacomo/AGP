@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerExploration : MonoBehaviour
 {
     private MinimapManager minimapManager;
+    
     public void SetMiniMapManager(MinimapManager manager)
     {
         minimapManager = manager;
