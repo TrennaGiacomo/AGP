@@ -1349,6 +1349,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 5130534035506041854, guid: d29db52b7ba5ded4a95b47d290df17aa, type: 3}
   spawnRoomPosition: {x: 0, y: 0}
   roomSpacing: 10
+  minimapManager: {fileID: 55993262}
 --- !u!1 &1452327184
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,12 @@ public class Health : MonoBehaviour
 
     private GameObject healthBarRoot;
     private HealthBarUI healthBarUI;
+    private IDeathHandler deathHandler;
+
+    private void Awake()
+    {
+        deathHandler = GetComponent<IDeathHandler>();
+    }
 
     private void Start()
     {
@@ -57,11 +63,11 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        if(healthBarUI != null)
+        deathHandler?.HandleDeath();
+        
+        if(healthBarUI != null && !(deathHandler is MonoBehaviour))
         {
-            if(GetComponent<EnemyAI>()) EnemyPool.Instance.ReturnEnemy(gameObject);
-            else if(GetComponent<PlayerController>()) SceneManagerPersistent.Instance.EndGame(false);
-            else Destroy(healthBarUI.gameObject);
+            Destroy(healthBarUI.gameObject);
         }
     }
 }

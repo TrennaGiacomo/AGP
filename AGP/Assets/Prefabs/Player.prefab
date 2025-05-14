@@ -5652,7 +5652,10 @@ GameObject:
   m_Component:
   - component: {fileID: 116711637051954225}
   - component: {fileID: 7871355556395013025}
+  - component: {fileID: 2257472624555507960}
+  - component: {fileID: 8666451428649646181}
   - component: {fileID: 1870695524166985603}
+  - component: {fileID: 6049702714423040467}
   - component: {fileID: 8835558264404251202}
   - component: {fileID: 7588475702603969544}
   m_Layer: 3
@@ -5694,10 +5697,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  turningSpeed: 10
   rotateTowardMovement: 1
+--- !u!114 &2257472624555507960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5130534035506041854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f8f7f9fdea5264b8fd786ac36f39b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7854476873149651212, guid: a0fc931c5e27ea048a9bd77a2ada8cf8, type: 3}
   firePoint: {fileID: 2289388379754371630}
   shootCooldown: 0.5
+--- !u!114 &8666451428649646181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5130534035506041854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ae0257db42044a47ba1bf243020a47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1870695524166985603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5713,6 +5741,18 @@ MonoBehaviour:
   maxHealth: 100
   healthBarPrefab: {fileID: 2058431911404192518, guid: c7f4ff24a94b0834abb16ac314692c49, type: 3}
   healthBarOffset: {x: 0, y: 2, z: 0}
+--- !u!114 &6049702714423040467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5130534035506041854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe49c4c4a12cd140bb1c865e79fef28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!143 &8835558264404251202
 CharacterController:
   m_ObjectHideFlags: 0

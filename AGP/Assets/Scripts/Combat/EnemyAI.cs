@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour, IDeathHandler
 {
     [Header("Enemy Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
@@ -173,5 +173,10 @@ public class EnemyAI : MonoBehaviour
                 agent.ResetPath();
             }
         }
+    }
+
+    public void HandleDeath()
+    {
+        EnemyPool.Instance.ReturnEnemy(gameObject);
     }
 }
